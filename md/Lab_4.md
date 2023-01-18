@@ -297,32 +297,9 @@ abc
 
 
 
-
-
-
-
 ### String methods
 
-
-
-Most of the Python string methods are built into the standard Python
-string class, so all string objects have them automatically. The
-standard [string] module also contains some useful constants.
-Modules are discussed in detail in [chapter
-10].
-
-
-
-For the purposes of this section, you need only remember that most
-string methods are attached to the string object they operate on by a
-dot ([.]), as in [x.upper()]. That is, they're prepended
-with the string object followed by a dot. Because strings are immutable,
-the string methods are used only to obtain their return value and don't
-modify the string object they're attached to in any way.
-
-
-
-I begin with those string operations that are the most useful and most
+We will begin with those string operations that are the most useful and most
 commonly used; then I discuss some less commonly used but still useful
 operations. At the end of this section, I discuss a few miscellaneous
 points related to strings. Not all the string methods are documented
@@ -485,16 +462,7 @@ test\"] to [\"this-is-a-test\"]?
 
 
 
-You can use the functions [int] and [float] to convert
-strings to integer or floating-point numbers, respectively. If they're
-passed a string that can't be interpreted as a number of the given type,
-these functions raise a [ValueError] exception. Exceptions are
-explained in [chapter
-14].
-
-
-
-In addition, you may pass [int] an optional second argument,
+You may pass [int] an optional second argument,
 specifying the numeric base to use when interpreting the input string:
 
 
@@ -648,38 +616,8 @@ be removed as an extra parameter:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Note that [strip] removes any and all of the characters in the
 extra parameter string, no matter in which order they occur ***2***.
-
-
-
-The most common use for these
-functions is as a quick way to clean up strings that have just been read
-in. This technique is particularly helpful when you're reading lines
-from files (discussed in [chapter
-13]),
-because Python always reads in an entire line, including the trailing
-newline, if one exists. When you get around to processing the line read
-in, you typically don't want the trailing newline. [rstrip] is a
-convenient way to get rid of it.
-
-
 
 
 ##### Quick Check: strip
@@ -711,8 +649,7 @@ x.strip("\n)(,")
 
 The string objects provide several methods to perform simple string
 searches. Before I describe them, though, I'll talk about another module
-in Python: [re]. (This module is discussed in-depth in [chapter
-16]
+in Python: [re].
 
 
 
@@ -802,43 +739,15 @@ the first character of the last occurrence of [substring] in
 ```
 
 
-
-
 [rfind] can also take one or two optional arguments, with the same
 meanings as those for [find].
 
-
-
-[index] and [rindex] are identical to [find] and
-[rfind], respectively, except for one difference: If [index]
-or [rindex] fails to find an occurrence of [substring] in
-[string], it doesn't return [--1] but raises a
-[ValueError] exception. Exactly what this means will be clear
-after you read [chapter
-14].
 
 
 
 [count] is used identically to any of the previous four functions,
 but returns the number of non-overlapping times the given substring
 occurs in the given string:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1232,86 +1141,6 @@ an actual Python function:
 
 
 
-Python hasn't produced a string containing the code that implements the
-[len] function, but it has at least returned a
-string---[\<built-in function len\>]---that describes what that
-function is. If you keep the [repr] function in mind and try it on
-each Python data type (dictionaries, tuples, classes, and the like) in
-the book, you'll see that no matter what type of Python object you have,
-you can get a string that describes something about that object.
-
-
-
-This is great for debugging programs. If you're in doubt about what's
-held in a variable at a certain point in your program, use [repr]
-and print out the contents of that variable.
-
-
-
-I've covered how Python can convert any object to a string that
-describes that object. The truth is, Python can do this in either of two
-ways. The [repr] function always returns what might be loosely
-called the *formal string representation* of a Python object. More
-specifically, [repr] returns a string representation of a Python
-object from which the original object can be rebuilt. For large, complex
-objects, this may not be the sort of thing you want to see in debugging
-output or status reports.
-
-
-
-Python also provides the built-in [str] function. In contrast to
-[repr], [str] is intended to produce *printable* string
-representations, and it can be applied to any Python object. [str]
-returns what might be called the *informal string representation* of the
-object. A string returned by [str] need not define an object fully
-and is intended to be read by humans, not by Python code.
-
-
-
-You won't notice any difference between [repr] and [str]
-when you start using them, because until you begin using the
-object-oriented features of Python, there's no difference. [str]
-applied to any built-in Python object always calls [repr] to
-calculate its result. Only when you start defining your own classes does
-the difference between [str] and [repr] become important, as
-discussed in [chapter
-15].
-
-
-
-So why talk about this now? I want you to be aware that there's more
-going on behind the scenes with [repr] than just being able to
-easily write [print] functions for debugging. As a matter of good
-style, you may want to get into the habit of using [str] rather
-than [repr] when creating strings for displaying information.
-
-
-
-
-
-
-
-### Using the format method
-
-
-
-You can format strings in Python 3 in two ways. The newer way is to use
-the string class's [format] method. The [format] method
-combines a format string containing replacement fields marked with [{
-}] with replacement values taken from the parameters given to the
-[format] command. If you need to include a literal [{] or
-[}] in the string, you double it to [{{] or [}}]. The
-[format] command is a powerful string-formatting mini-language
-that offers almost endless possibilities for manipulating string
-formatting. Conversely,
-it's
-fairly simple to use for the most common use cases, so I look at a few
-basic patterns in this section. Then, if you need to use the more
-advanced options, you can refer to the string-formatting section of the
-standard library documentation.
-
-
-
 #### The format method and positional parameters
 
 
@@ -1319,23 +1148,6 @@ standard library documentation.
 A simple way to use the string [format] method is with numbered
 replacement fields that correspond to the parameters passed to the
 [format] function:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1600,19 +1412,6 @@ what you expect it to do.
 #### Named parameters and formatting sequences
 
 
-
-Finally, one additional feature available with the [%] operator
-can be useful in certain circumstances. Unfortunately, to describe it, I
-have to employ a Python feature that I haven't yet discussed in detail:
-*dictionaries*, commonly called *hash tables* or *associative arrays* in
-other languages. You can skip ahead to [chapter
-7]
-to learn about dictionaries; skip this section for now and come back to
-it later; or read straight through, trusting the examples to make things
-clear.
-
-
-
 Formatting sequences can specify what should be substituted for them by
 name rather than by position. When you do this, each formatting sequence
 has a name in parentheses immediately following the initial [%] of
@@ -1804,39 +1603,7 @@ specifiers, refer to PEP-498 in the online Python documentation.
 
 
 
-
-
-
-
 ### Bytes
-
-
-
-A [bytes] object is similar to a [string] object but with an
-important difference: A [string] is an immutable sequence of
-Unicode characters, whereas a [bytes] object is a sequence of
-integers with values from 0 to 256. Bytes can be necessary when you're
-dealing with binary data, such as reading from a binary data file.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 The key thing to remember is that [bytes] objects may look like
 strings, but they can't be used exactly like strings or combined with
@@ -1859,43 +1626,6 @@ TypeError: can't concat str to bytes
 >>> xb.decode()                                4
 'á'
 ```
-
-
-
-
-The first thing you can see is that to convert from a regular (Unicode)
-string to [bytes], you need to call the string's [encode]
-method ***1***. After it's encoded to a [bytes] object, the
-character is 2 bytes and no longer prints the same way that the string
-did ***2***. Further, if you attempt to add a [bytes] object and a
-string object together, you get a type error because the two types are
-incompatible ***3***. Finally, to convert a [bytes] object back to
-a string, you need to call that object's [decode] method ***4***.
-
-
-
-Most of the time, you shouldn't need to think about Unicode or bytes at
-all. But when you need to deal with international character sets (an
-increasingly common issue), you must understand the difference between
-regular strings and [bytes].
-
-
-
-
-##### Quick Check: Bytes
-
-
-
-For which of the following kinds of data would you want to use a string?
-For which could you use bytes?
-
-
--   [***1*** Data file storing binary data]
--   [***2*** Text in a language with accented characters]
--   [***3*** Text with only uppercase and lowercase roman
-    characters]
--   [***4*** A series of integers no larger than 255]
-
 
 
 
@@ -1941,4 +1671,3 @@ with open("moby_01.txt") as infile, open("moby_01_clean.txt", "w") as outfile:
 -   [Strings are immutable; they can't be changed in place.]
 -   [Operations that appear to change strings actually return a copy
     with the changes.]
--   

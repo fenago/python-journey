@@ -19,104 +19,6 @@ conditionals. This lab examines each element in detail.
 
 
 
-### The while loop
-
-
-
-You've come across the basic [while] loop several times already.
-The full [while] loop looks like this:
-
-
-
-```
-while condition:
-    body
-else:
-    post-code
-```
-
-
-
-
-[condition] is a Boolean
-expression---that is, one that evaluates to a [True] or
-[False] value. As long as it's [True], the [body] is
-executed repeatedly. When the [condition] evaluates to
-[False], the [while] loop executes the [post-code]
-section and then terminates. If the [condition] starts out by
-being [False], the [body] won't be executed at all---just
-the [post-code] section. The [body] and [post-code]
-are each sequences of one or more Python statements that are separated
-by newlines and are at the same level of indentation. The Python
-interpreter uses this level to delimit them. No other delimiters, such
-as braces or brackets, are necessary.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Note that the [else] part of the [while] loop is optional
-and not often used. That's because as long as there's no [break]
-in the [body], this loop
-
-
-
-```
-while condition:
-    body
-else:
-    post-code
-```
-
-
-
-
-and this loop
-
-
-
-```
-while condition:
-    body
-post-code
-```
-
-
-
-
-do the same things---and the second is simpler to understand. I probably
-wouldn't mention the [else] clause except that if you don't know
-about it, you may find it confusing if you run across this syntax in
-another person's code. Also, it's useful in some situations.
-
-
-
-The two special statements [break] and [continue] can be
-used in the [body] of a [while] loop. If [break] is
-executed, it immediately terminates the [while] loop, and not even
-the [post-code] (if there is an [else] clause) is executed.
-If [continue] is executed, it causes the remainder of the
-[body] to be skipped over; the [condition] is evaluated
-again, and the loop proceeds as normal.
-
-
-
 ### The if-elif-else statement
 
 
@@ -232,45 +134,6 @@ needed or worth the trouble.
 ### The for loop
 
 
-
-A [for] loop in Python is different from [for] loops in some
-other languages. The traditional pattern is to increment and test a
-variable on each iteration, which is what C
-[for]
-loops usually do. In Python, a [for] loop iterates over the values
-returned by any iterable object---that is, any object that can yield a
-sequence of values. For example, a [for] loop can iterate over
-every element in a list, a tuple, or a string. But an iterable object
-can also be a special function called [range] or a special type of
-function called a *generator* or a generator expression, which can be
-quite powerful. The general form is
-
-
-
-```
-for item in sequence:
-    body
-else:
-    post-code
-```
-
-
-
-
-[body] is executed once for each element of [sequence].
-[item] is set to be the first element of [sequence], and
-[body] is executed; then [item] is set to be the second
-element of [sequence], and [body] is executed, and so on for
-each remaining element of the [sequence].
-
-
-
-The [else] part is optional. Like the [else] part of a
-[while] loop, it's rarely used. [break] and [continue]
-do the same thing in a [for] loop as in a [while] loop.
-
-
-
 This small loop prints out the reciprocal of each number in [x]:
 
 
@@ -304,20 +167,6 @@ for i in range(len(x)):
         print("Found a negative number at index ", i)
 ```
 
-
-
-
-Given a number *n*, [range(n)] returns a sequence 0, 1, 2, \...,
-*n* -- 2, *n* -- 1. So passing it the length of a list (found using
-[len]) produces a sequence of the indices for that list's
-elements. The [range] function doesn't build a Python list of
-integers; it just appears to. Instead, it creates a range object that
-produces integers on demand. This is useful when you're using explicit
-loops to iterate over really large lists. Instead of building a list
-with 10 million elements in it, for example, which would take up quite a
-bit of memory, you can use [range(10000000)], which takes up only
-a small amount of memory and generates a sequence of integers from 0 up
-to (but *not* including) 10000000 as needed by the [for] loop.
 
 
 
@@ -586,24 +435,6 @@ optional conditional expression using the value of the variable to
 select whether it's included in the new list or dictionary. The
 following code does exactly the same thing as the previous code but is a
 list comprehension:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1263,7 +1094,7 @@ Upon running word\_count.py, you get the following output:
 
 
 ```
-naomi@mac:~/quickpythonbook/code $ python3.1 word_count.py
+naomi@mac:~/pythonjourney/code $ python3 word_count.py
 File has 4 lines, 30 words, 189 characters
 ```
 

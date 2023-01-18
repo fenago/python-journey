@@ -255,7 +255,7 @@ provides an interface to the mechanisms behind importing modules:
 ```
 >>> import mymath, importlib
 >>> importlib.reload(mymath)
-<module 'mymath' from '/home/doc/quickpythonbook/code/mymath.py'>
+<module 'mymath' from '/home/doc/pythonjourney/code/mymath.py'>
 ```
 
 
@@ -677,50 +677,8 @@ You can do the following to access [\_g] or [\_b]:
 5
 ```
 
-
-
-
 The convention of leading underscores to indicate private names is used
 throughout Python, not just in modules.
-
-
-
-### Library and third-party modules
-
-
-
-At the beginning of this lab, I mentioned that the standard Python
-distribution is split into modules to make it more manageable. After
-you've installed Python, all the functionality in these library modules
-is available to you. All that's needed is to import the appropriate
-modules, functions, classes, and so forth explicitly, before you use
-them.
-
-
-
-Many
-of the most common and useful standard modules are discussed throughout
-this course. But the standard Python distribution includes far more than
-what this course describes. At the very least, you should browse the table
-of contents of the *Python Library Reference*.
-
-
-
-In IDLE, you can easily browse to and look at those modules written in
-Python by using the Path Browser window. You can also search for example
-code that uses modules with the Find in Files dialog box, which you can
-open from the Edit menu of the Python shell window. You can search your
-own modules as well in this way.
-
-
-
-Available third-party modules and links to them are identified in the
-Python Package Index (pyPI), which I discuss in [chapter
-19].
-You need to download these modules and install them in a directory in
-your module search path to make them available for import into your
-programs.
-
 
 
 
@@ -1071,13 +1029,6 @@ names defined in it:
 
 
 
-There are a lot of entries here. Those entries ending in [Error]
-and [Exit] are the names of the exceptions built into Python,
-which I discuss in [chapter
-14].
-
-
-
 The last group (from [abs] to [zip]) is built-in functions
 of Python. You've already seen many of these functions in this course and
 will see more, but I don't cover all of them here. If you're interested,
@@ -1229,23 +1180,6 @@ Consider a variable [width] that's in the module
 
 
 \(C\) within the script that imported the [make\_window.py] module
-
-
-
-
-
-##### Lab 10: Create a module
-
-
-
-Package the functions created at the end of [chapter
-9]
-as a standalone module. Although you can include code to run the module
-as the main program, the goal should be for the functions to be
-completely usable from another script.
-
-
-
 
 
 

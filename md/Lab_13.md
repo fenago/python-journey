@@ -26,9 +26,7 @@ it's not an exposition on object-oriented programming (OOP) itself.
 ### Defining classes
 
 
-
-A
-*class* in Python is effectively a data type. All the data types built
+A *class* in Python is effectively a data type. All the data types built
 into Python are classes, and Python gives you powerful tools to
 manipulate every aspect of a class's behavior. You define a class with
 the [class] statement:
@@ -1120,23 +1118,6 @@ class Shape:
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Next, create a subclass that inherits from the base class [Shape]:
 
 
@@ -1802,148 +1783,6 @@ as a reference or a base for your own exploration. As with most other
 concepts in Python, you can build a solid understanding of what's going
 on by playing around with a few simplified examples.
 
-
-
-### Destructors and memory management
-
-
-
-You've already seen class initializers (the [\_\_init\_\_]
-methods). A destructor can be defined for a class as well. But unlike in
-C++, creating and calling a destructor isn't necessary to ensure that
-the memory used by your instance is freed. Python provides automatic
-memory management through a reference-counting mechanism. That is, it
-keeps track of the number of references to your instance; when this
-number reaches zero, the memory used by your instance is reclaimed, and
-any Python objects referenced by your instance have their reference
-counts decremented by one. *You almost never need to define a
-destructor*.
-
-
-
-You may occasionally encounter a situation in which you need to
-deallocate an external resource explicitly when an object is removed. In
-such a situation, the best practice is to use a context manager, as
-discussed in [chapter
-14].
-As mentioned there, you can use the [contextlib]
-module from the standard library to create a custom context manager for
-your situation.
-
-
-
-### Multiple inheritance
-
-
-
-Compiled languages place severe restrictions on the use of *multiple
-inheritance*---the ability of objects to inherit data and behavior from
-more than one parent class. The rules for using multiple inheritance in
-C++, for example, are so complex that many people avoid using it. In
-Java, multiple inheritance is disallowed, although Java does have the
-interface mechanism.
-
-
-
-Python places no such restrictions on multiple inheritance. A class can
-inherit from any number of parent classes in the same way that it can
-inherit from a single parent class. In the simplest case, none of the
-involved classes, including those inherited indirectly through a parent
-class, contains instance variables or methods of the same name. In such
-a case, the inheriting class behaves like a synthesis of its own
-definitions and all of its ancestors' definitions. Suppose that class
-[A] inherits from classes [B], [C], and [D];
-class [B] inherits from classes [E] and [F]; and class
-[D] inherits from class [G] (see [figure
-15.3]).
-Also suppose that none of these classes shares method names. In this
-case, an instance of class [A] can be used as though it were an
-instance of any of the classes [B]--[G], as well as
-[A]; an instance of class [B] can be used as though it were
-an instance of class [E] or [F] as well as class [B];
-and an instance of class [D] can be used as though it were an
-instance of class [G] as well as class [D]. In terms of
-code, the class definitions look like this:
-
-
-
-```
-class E:
-        . . .
-class F:
-        . . .
-class G:
-        . . .
-class D(G):
-        . . .
-class C:
-        . . .
-class B(E, F):
-        . . .
-class A(B, C, D):
-        . . .
-```
-
-
-
-
-##### Figure 15.3. Inheritance hierarchy
-
-![](./images/15fig03.jpg)
-
-
-
-The situation is more complex when some of the classes share method
-names, because Python must decide which of the identical names is the
-correct one. Suppose that you want to resolve a method invocation
-[a.f()] on an instance [a] of class [A], where
-[f] isn't defined in [A] but is defined in all of [F],
-[C], and [G]. Which of the various methods will be invoked?
-
-
-
-The answer lies in the order in which Python searches base classes when
-looking for a method not defined in the original class on which the
-method was invoked. In the simplest cases, Python looks through the base
-classes of the original class in left-to-right order, but it always
-looks through all of the ancestor classes of a base class before looking
-in the next base class. In attempting to execute [a.f()], the
-search goes something like this:
-
-
-1.  [Python first looks in the class of the invoking object, class
-    [A].]
-2.  [Because [A] doesn't define a method [f], Python starts
-    looking in the base classes of [A]. The first base class of
-    [A] is [B], so Python starts looking in
-    [B].]
-3.  [Because [B] doesn't define a method [f], Python
-    continues its search of [B] by looking in the base classes of
-    [B]. It starts by looking in the first base class of
-    [B], class [E].]
-4.  [[E] doesn't define a method [f] and also has no base
-    classes, so there's no more searching to be done in [E].
-    Python goes back to class [B] and looks in the next base class
-    of [B], class [F].]
-
-
-Class [F] does contain a method [f], and because it was the
-first method found with the given name, it's the method used. The
-methods called [f] in classes [C] and [G] are ignored.
-
-
-
-Using internal logic like this isn't likely to lead to the most readable
-or maintainable of programs, of course. And with more complex
-hierarchies, other factors come into play to make sure that no class is
-searched twice and to support cooperative calls to [super].
-
-
-
-But this hierarchy is probably more complex than you'd expect to see in
-practice. If you stick to the more standard uses of multiple
-inheritance, as in the creation of mixin or addin classes, you can
-easily keep things readable and avoid name clashes.
 
 
 

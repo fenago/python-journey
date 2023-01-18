@@ -1236,10 +1236,7 @@ a script. I know of at least one company in which part of the
 development policy is to always create one for every Python module
 developed. Python's built-in data object types and methods usually make
 this process easy, and those who practice this technique seem to be
-unanimously convinced that it's well worth the effort. See [chapter
-21]
-to find out more about testing your Python code.
-
+unanimously convinced that it's well worth the effort.
 
 
 Another option is to create a separate file with only the portion of the
@@ -1396,35 +1393,6 @@ Python interpreter/environment with an application in a standalone
 application. In general, however, this path is still difficult and
 complex, and you probably want to avoid it unless you have a strong need
 and the time and resources to make the process work.
-
-
-
-
-##### Lab 11: Creating a program
-
-
-
-In [chapter
-8],
-you created a version of the UNIX [wc] utility to count the lines,
-words, and characters in a file. Now that you have more tools at your
-disposal, refactor that program to make it work more like the original.
-In particular, the program should have options to show only lines
-([-l]), only words ([-w]), and only characters ([-c]).
-If none of those options is given, all three stats are displayed. But if
-any of these options is present, only the specified stats are shown.
-
-
-
-For an extra challenge, have a look at the [man] page for
-[wc] on a Linux/UNIX system, and add the [-L] to show the
-longest line length. Feel free to try to implement the complete behavior
-as listed in the man page and test it against your system's [wc]
-utility.
-
-
-
-
 
 
 

@@ -23,19 +23,6 @@ correspond to function definitions, arguments, parameters, and so forth.
 ### Basic function definitions
 
 
-
-The basic syntax for a Python function definition is
-
-
-
-```
-def name(parameter1, parameter2, . . .):
-    body
-```
-
-
-
-
 As it does with control
 structures, Python uses indentation to delimit the body of the function
 definition. The following simple example puts the factorial code from a
@@ -76,20 +63,6 @@ back to the code calling the function ***2***.
 
 
 ##### Procedure or function?
-
-
-
-In some languages, a function that doesn't return a value is called a
-*procedure*. Although you can (and will) write functions that don't have
-a [return] statement, they aren't really procedures. All Python
-procedures are functions; if no explicit [return] is executed in
-the procedure body, the special Python value [None] is returned,
-and if [return arg] is executed, the value [arg] is
-immediately returned. Nothing else in the function body is executed
-after a [return] has been executed. Because Python doesn't have
-true procedures, I'll refer to both types as *functions*.
-
-
 
 
 Although all Python functions return values, it's up to you whether a
@@ -670,17 +643,6 @@ function [fun].
 
 
 
-Similar to the [global] statement is the [nonlocal]
-statement, which causes an identifier to refer to a previously bound
-variable in the closest enclosing scope. I discuss scopes and namespaces
-in more detail in [chapter
-10],
-but the point is that [global] is used for a top-level variable,
-whereas [nonlocal] can refer to any variable in an enclosing
-scope, as the example in [listing
-9.1]
-illustrates.
-
 
 
 ##### Listing: File nonlocal.py
@@ -1125,10 +1087,7 @@ in [\"\<html\>\"] and [\"\</html\>\"], so that [myfunction
 
 
 
-Looking back at the labs in [chapters
-6]
-and
-[7],
+Looking back at the previous labs,
 refactor that code into functions for cleaning and processing the data.
 The goal should be that most of the logic is moved into functions. Use
 your own judgment as to the types of functions and parameters, but keep

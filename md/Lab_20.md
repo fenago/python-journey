@@ -1,14 +1,5 @@
 Data over the network 
-=================================
-
-
-
-
-
-
-
-
-
+=============================
 
 
 ### *This lab covers*
@@ -17,69 +8,6 @@ Data over the network
 -   [Getting data via APIs]
 -   [Structured data file formats: JSON and XML]
 -   [Scraping data]
-
-
-
-You've seen how to deal with text-based data files. In this lab, you
-use Python to move data files over the network. In some cases, those
-files might be text or spreadsheet files, as discussed in [chapter
-21],
-but in other cases, they might be in more structured formats and served
-from REST or SOAP application programming interfaces (APIs). Sometimes,
-getting the data may mean scraping it from a website. This lab
-discusses all of these situations and shows some common use cases.
-
-
-
-### Fetching files
-
-
-
-Before you can do anything with data files, you have to get them.
-Sometimes, this process is very easy, such as manually downloading a
-single zip archive, or maybe the files have been pushed to your machine
-from somewhere else. Quite often, however, the process is more involved.
-Maybe a large number of files needs to be
-retrieved from a
-remote server, files need to be retrieved regularly, or the retrieval
-process is sufficiently complex to be a pain to do manually. In any of
-those cases, you might well want to automate fetching the data files
-with Python.
-
-
-
-First of all, I want to be clear that using a Python script isn't the
-only way, or always the best way, to retrieve files. The following
-sidebar offers more explanation of the factors I consider when deciding
-whether to use a Python script for file retrieval. Assuming that using
-Python does make sense for your particular use case, however, this
-section illustrates some common patterns you might employ.
-
-
-
-
-##### Do I use Python?
-
-
-
-Although using Python to retrieve files can work very well, it's not
-always the best choice. In making a decision, you might want to consider
-two things.
-
-
--   [*Are simpler options available?* Depending on your operating system
-    and your experience, you may find that simple shell scripts and
-    command-line tools are simpler and easier to configure. If you don't
-    have those tools available or aren't comfortable using them (or the
-    people who will be maintaining them aren't comfortable with them),
-    you may want to consider a Python script.]
--   [*Is the retrieval process complex or tightly coupled with
-    processing?* Although those situations are never desirable, they can
-    occur. My rule these days is that if a shell script requires more
-    than a few lines, or if I have to think hard about how to do
-    something in a shell script, it's probably time to switch to
-    Python.]
-
 
 
 #### Using Python to fetch files from an FTP server

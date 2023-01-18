@@ -1080,9 +1080,7 @@ printed to the screen.
 
 
 Suppose that you want a dictionary-like type that allows only strings as
-keys (maybe to make it work like a [shelf] object, as described in
-[chapter
-13]).
+keys.
 What options would you have for creating such a class? What would be the
 advantages and disadvantages of each option?
 

@@ -13,10 +13,7 @@ Using the filesystem
 
 
 
-Working with files involves one of two things: basic I/O (described in
-[chapter
-13],
-*"*Reading and writing files") and working with the filesystem (for
+Working with files involves one of two things: basic I/O "Reading and writing files" and working with the filesystem (for
 example, naming, creating, moving, or referring to files), which is a
 bit tricky, because different operating systems have different
 filesystem conventions.
@@ -1061,8 +1058,7 @@ delete an entire directory substructure.
 
 
 
-Files can be created by writing to them, as discussed in [chapter
-11].
+Files can be created by writing to them.
 To create a directory, use [os.makedirs] or [os.mkdir]. The
 difference between them is that [os.mkdir] doesn't create any
 necessary intermediate directories, but [os.makedirs] does:

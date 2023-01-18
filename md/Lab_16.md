@@ -621,38 +621,6 @@ explicit import:
 <module 'mathproj.comp.c1' from 'mathproj/comp/c1.py'>
 ```
 
-
-
-
-### Proper use of packages
-
-
-
-Most of your packages shouldn't be as structurally complex as these
-examples imply. The package mechanism allows wide latitude in the
-complexity and nesting of your package design. It's obvious that very
-complex packages *can* be built, but it isn't obvious that they *should*
-be built.
-
-
-
-Here are a couple of suggestions that are appropriate in most
-circumstances:
-
-
--   [Packages shouldn't use deeply nested directory structures. Except
-    for absolutely huge collections of code, there should be no need to
-    do so. For most packages, a single top-level directory is all that's
-    needed. A two-level hierarchy should be able to effectively handle
-    all but a few of the rest.
--   [Although you can use the [\_\_all\_\_] attribute to hide
-    names from [from \... import \*] by not listing those names,
-    doing so probably is *not* a good idea, because it's inconsistent.
-    If you want to hide names, make them private by prefacing them with
-    an underscore.]
-
-
-
 ##### Quick Check: Packages
 
 
@@ -662,23 +630,6 @@ images on the page pointed to by that URL, resizes them to a standard
 size, and stores them. Leaving aside the exact details of how each of
 these functions will be coded, how would you organize those features
 into a package?
-
-
-
-
-
-##### Lab 18: Create a package
-
-
-
-In [chapter
-14],
-you added error handling to the text cleaning and word frequency
-counting module that you created in [chapter
-11].
-Refactor that code into a package containing one module for the cleaning
-functions, one for the processing functions, and one for the custom
-exceptions. Then write a simple main function that uses all three.
 
 
 

@@ -15,33 +15,7 @@ Lists, tuples, and sets
 
 
 
-In this lab, I discuss the two major Python sequence types: lists
-and tuples. At first, lists may remind you of arrays in many other
-languages, but don't be fooled: lists are a good deal more flexible and
-powerful than plain arrays.
-
-
-
-Tuples are like lists that can't be modified; you can think of them as a
-restricted type of list or as a basic record type. I discuss the need
-for such a restricted data type later in the chapter. This lab also
-discusses a newer Python collection type: sets. Sets are useful when an
-object's membership in the collection, as opposed to its position, is
-important
-
-
-
-Most
-of the chapter is devoted to lists, because if you understand lists, you
-pretty much understand tuples. The last part of the chapter discusses
-the differences between lists and tuples in both functional and design
-terms.
-
-
-
 ### Lists are like arrays
-
-
 
 A list in Python is much the same thing as an array in Java or C or any
 other language; it's an ordered collection of objects. You create a list
@@ -66,19 +40,6 @@ and a list automatically grows or shrinks as needed.
 
 
 ##### Arrays in Python
-
-
-
-A typed [array] module available in Python provides arrays based
-on C data types. Information on its use can be found in the *Python
-Library Reference*. I suggest that you look into it only if you really
-need the performance improvement. If a situation calls for numerical
-computations, you should consider using [NumPy], mentioned in
-[chapter
-4]
-and available at [www.scipy.org](http://www.scipy.org/).
-
-
 
 
 Unlike lists in many other languages, Python lists can contain different
@@ -628,8 +589,6 @@ Conversely, you can sort a list of lists:
 ```
 
 
-
-
 According to the built-in Python rules for comparing complex objects,
 the sublists are sorted first by ascending first element and then by
 ascending second element.
@@ -644,37 +603,7 @@ sorted.
 
 
 
-
-
-
-
 #### Custom sorting
-
-
-
-To use custom sorting, you need to be able to define
-functions---something I haven't talked about yet. In this section, I
-also discuss the fact that [len(string)] returns the number of
-characters in a string. String operations are discussed more fully in
-[chapter
-6].
-
-
-
-By default, [sort] uses built-in Python comparison functions to
-determine ordering, which is satisfactory for most purposes. At times,
-though, you want to sort a list in a way that doesn't correspond to this
-default ordering. Suppose that you want to sort a list of words by the
-number of characters in each word, as opposed to the lexicographic sort
-that Python normally carries out.
-
-
-
-To do this, write a function that returns the value, or key, that you
-want to sort on, and use it with the [sort] method. That function
-in the context of [sort] is a function that takes one argument and
-returns the key or value that the [sort] function is to use.
-
 
 
 For number-of-characters ordering, a suitable key function could be
@@ -1625,9 +1554,6 @@ string into characters:
 
 This technique works because [list] (and [tuple]) apply to
 any Python sequence, and a string is just a sequence of characters.
-(Strings are discussed fully in [chapter
-6]
-
 
 
 
@@ -1653,53 +1579,11 @@ If you had a tuple [x = (3, 1, 4, 2)], how might you end up with
 [x] sorted?
 
 
-
-
-
-
-
-
-### Sets
-
-
-
-A
-*set* in Python is an unordered collection of objects used when
-membership and uniqueness in the set are main things you need to know
-about that object. Like dictionary keys (discussed in [chapter
-7]),
-the items in a set must be immutable and hashable. This means that ints,
-floats, strings, and tuples can be members of a set, but lists,
-dictionaries, and sets themselves can't.
-
-
-
 #### Set operations
-
-
 
 In addition to the operations that apply to collections in general, such
 as [in], [len], and iteration in [for] loops, sets
 have several set-specific operations:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ```

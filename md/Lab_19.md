@@ -48,98 +48,11 @@ up, or reorganizing the records it contains. The loading refers to
 storing the transformed data in a new place, either a different file or
 a database. This lab deals with the basics of ETL in Python,
 starting with text-based data files and storing the transformed data in
-other files. I look at more structured data files in [chapter
-22]
-and storage in databases in [chapter
-23].
-
-
-
-### Reading text files
-
-
-
-The first part of ETL---the "extract" portion---involves opening a file
-and reading its contents. This process seems like a simple one, but even
-at this point there can be issues, such as the file's size. If a file is
-too large to fit into memory and be manipulated, you need to structure
-your code to handle smaller segments of the file, possibly operating one
-line at a time.
-
-
-
-#### Text encoding: ASCII, Unicode, and others
-
-
-
-Another possible pitfall is in the encoding. This lab deals with
-text files, and in fact, much of the data exchanged in the real world is
-in text files. But the exact nature of *text* can vary from application
-to application, from person to person, and of course from country to
-country.
-
-
-
-Sometimes, *text* means something in the ASCII encoding, which has 128
-characters, only 95 of which are printable. The good news about ASCII
-encoding is that it's the lowest common denominator of most data
-exchange. The bad news is that it doesn't begin to handle the
-complexities of the many alphabets and writing systems of the world.
-Reading files using ASCII encoding is almost certain to cause trouble
-and throw errors on character values that it doesn't understand, whether
-it's a German ü, a Portuguese ç, or something from almost any language
-other than English.
-
-
-
-These errors arise because ASCII is based on 7-bit values, whereas the
-bytes in a typical file are 8 bits, allowing 256 possible values as
-opposed to the 128 of a 7-bit value. It's routine to use those
-additional values to store additional characters---anything from extra
-punctuation (such as the printer's en dash and em dash) to symbols (such
-as the trademark, copyright, and degree symbols) to accented versions of
-alphabetical characters. The problem has always been that if, in reading
-a text file, you encounter a character in the 128 outside the ASCII
-range, you have no way of knowing for sure how it was encoded. Is the
-character value of 214, say, a division symbol, an Ö, or something else?
-Short of having the code that created the file, you have no way to know.
+other files.
 
 
 
 ##### Unicode and UTF-8
-
-
-
-One way to mitigate this
-confusion is Unicode. The Unicode encoding called UTF-8 accepts the
-basic ASCII characters without any change but also allows an almost
-unlimited set of other characters and symbols according to the Unicode
-standard. Because of its flexibility, UTF-8 was used in more 85% of web
-pages served at the time I wrote this lab, which means that your
-best bet for reading text files is to assume UTF-8 encoding. If the
-files contain only ASCII characters, they'll still be read correctly,
-but you'll also be covered if other characters are encoded in UTF-8. The
-good news is that the Python 3 string data type was designed to handle
-Unicode by default.
-
-
-
-Even with Unicode, there'll be occasions when your text contains values
-that can't be successfully encoded. Fortunately, the [open]
-function in Python accepts an optional errors parameter that tells it
-how to deal with encoding errors when reading or writing files. The
-default option is [\'strict\'], which causes an error to be raised
-whenever an encoding error is encountered. Other useful options are
-[\'ignore\'], which causes the character causing the error to be
-skipped; [\'replace\'], which causes the character to be replaced
-by a marker character (often, ?); [\'backslashreplace\'], which
-replaces the character with a backslash escape sequence; and
-[\'surrogateescape\'], which translates the offending character to
-a private Unicode code point on reading and back to the original
-sequence of bytes on writing. Your particular use case will determine
-how strict you need to be in handling or resolving encoding issues.
-
-
 
 Look at a short example of a file containing an invalid UTF-8 character,
 and see how the different options handle that character. First, write
@@ -1056,50 +969,12 @@ of sorting, so a complex key function could mean a real performance
 slowdown, particularly with a large data set.
 
 
-
-#### Data cleaning issues and pitfalls
-
-
-
-It
-seems that there are as many types of dirty data as there are sources
-and use cases for that data. Your data will always have quirks that do
-everything from making processing less accurate to making it impossible
-to even load the data. As a result, I can't provide an exhaustive list
-of the problems you might encounter and how to deal with them, but I can
-give you some general hints.
-
-
--   [*Beware of whitespace and null characters.* The problem with
-    whitespace characters is that you can't see them, but that doesn't
-    mean that they can't cause troubles. Extra whitespace at the
-    beginning and end of data lines, extra whitespace around individual
-    fields, and tabs instead of spaces (or vice versa) can all make your
-    data loading and processing more troublesome, and these problems
-    aren't always easily apparent. Similarly, text files with null
-    characters (ASCII 0) may seem okay on inspection but break on
-    loading and processing.]
--   [*Beware punctuation.* Punctuation can also be a problem. Extra
-    commas or periods can mess up CSV files and the processing of
-    numeric fields, and unescaped or unmatched quote characters can also
-    confuse things.]
--   [*Break down and debug the steps.* It's easier to debug a problem if
-    each step is separate, which means putting each operation on a
-    separate line, being more verbose, and using more variables. But the
-    work is worth it. For one thing, it makes any exceptions that are
-    raised easier to understand, and it also makes debugging easier,
-    whether with print statements, logging, or the Python debugger. It
-    may also be helpful to save the data after each step and to cut the
-    file size to just a few lines that cause the error.]
-
-
 ### Writing data files
 
 
 
 The last part of the ETL process may involve saving the transformed data
-to a database (which I discuss in [chapter
-22]),
+to a database,
 but often it involves writing the data to files. These files may be used
 as input for other applications and analysis, either by people or by
 other applications. Usually, you have a particular file specification
@@ -1109,14 +984,6 @@ named, what format and constraints there should be for each, and so on
 
 
 #### CSV and other delimited files
-
-
-
-Probably the easiest thing of all is to write your data to CSV files.
-Because you've already loaded, parsed, cleaned, and transformed the
-data, you're unlikely to hit any unresolved issues with the data itself.
-And again, using the [csv] module from the Python standard library
-makes your work much easier.
 
 
 
@@ -1243,11 +1110,7 @@ formatting, please refer to the [xlswriter] documentation.
 If you have several related data files, or if your files are large, it
 may make sense to package them in a compressed archive. Although various
 archive formats are in use, the zip file remains popular and almost
-universally accessible to users on almost every platform. For hints on
-how to create zip-file packages of your data files, please refer to
-[chapter
-20].
-
+universally accessible to users on almost every platform.
 
 
 

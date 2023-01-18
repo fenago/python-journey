@@ -434,39 +434,10 @@ of triple double quotes to do the same thing.)
 
 
 
-Python offers enough string-related functionality that [chapter
-6]
-is devoted to the topic.
-
-
-
-
 
 
 
 ### Numbers
-
-
-
-Because you're probably familiar with standard numeric operations from
-other languages, this course doesn't contain a separate chapter describing
-Python's numeric abilities. This section describes the unique features
-of Python numbers, and the Python documentation lists the available
-functions.
-
-
-
-Python offers four kinds of numbers: *integers*, *floats*, *complex*
-*numbers*, and *Booleans*. An integer constant is written as an
-integer---0, --11, +33, 123456---and has unlimited range, restricted
-only by the resources of your machine. A float can be written with a
-decimal point or in scientific notation: 3.14, --2E-8, 2.718281828. The
-precision of these values is governed by the underlying machine but is
-typically equal to double (64-bit) types in C. Complex numbers are
-probably of limited interest and are discussed separately later in the
-section. Booleans are either [True] or [False] and behave
-identically to 1 and 0 except for their string representations.
-
 
 
 Arithmetic is much like it is in C. Operations involving two integers
@@ -727,13 +698,6 @@ use. Some modules are explicitly designed to use this form of import.
 
 
 
-See [chapter
-10]
-for more details on how to use modules and module names.
-
-
-
-
 The important thing to keep in mind is that by importing the
 [cmath] module, you can do almost anything you can do with other
 numbers.
@@ -754,35 +718,6 @@ functions; then load the [cmath] module and do the same. What
 happens if you try to use one of those functions on an integer or float
 after loading the [cmath] module? How might you get the
 [math] module functions back?
-
-
-
-
-### The None value
-
-
-
-In addition to standard types such as strings and numbers, Python has a
-special basic data type that defines a single special data object called
-[None]. As the name suggests, [None] is used to represent an
-empty value. It appears in various guises throughout Python. For
-example, a procedure in Python is just a function that doesn't
-explicitly return a value, which means that by default, it returns
-[None].
-
-
-
-[None] is often useful in day-to-day Python programming as a
-placeholder to indicate a point in a data structure where meaningful
-data will eventually be found, even though that data hasn't yet been
-calculated. You can easily test for the presence of [None] because
-there's only one instance of [None] in the entire Python system
-(all references to [None] point to the same object), and
-[None] is equivalent only to itself.
-
-
-
-
 
 
 

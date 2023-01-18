@@ -73,29 +73,7 @@ file_object = open(file_name, 'r')
 
 
 
-
-Note also that this example uses the [with] keyword, indicating
-that the file will be opened with a context manager, which I explain
-more in [chapter
-14].
-For now, it's enough to note that this style of opening files better
-manages potential I/O errors and is generally preferred.
-
-
-
 ### Closing files
-
-
-
-After all data has been read from or written to a [file] object,
-it should be closed. Closing a [file] object frees up system
-resources, allows the underlying file to be read or written to by other
-code, and in general makes the program more reliable. For small scripts,
-not closing a [file] object generally doesn't have much of an
-effect; [file] objects are automatically closed when the script or
-program terminates. For larger programs, too many open [file]
-objects may exhaust system resources, causing the program to abort.
-
 
 
 You close a [file] object by using the [close] method when
@@ -393,8 +371,7 @@ read from the beginning?
 
 
 
-In addition to its path-manipulation powers discussed in [chapter
-12],
+In addition to its path-manipulation,
 a [Path] object can be used to read and write text and binary
 files. This capability can be convenient because no open or close is
 required, and separate methods are used for text and
@@ -925,22 +902,6 @@ def restore_data():
 
 This example is somewhat contrived. You probably won't be saving the
 state of the top-level variables of your interactive mode very often.
-
-
-
-A real-life application is an extension of the cache example given in
-[chapter
-7].
-In that chapter, you called a function that performed a time-intensive
-calculation based on its three arguments. During the course of a program
-run, many of your calls to that function ended up using the same set of
-arguments. You were able to obtain a significant performance improvement
-by caching the results in a dictionary, keyed by the arguments that
-produced them. But it was also the case that many sessions of this
-program were being run many times over the course of days, weeks, and
-months. Therefore, by pickling the cache, you can avoid having to start
-over with every session. Here is a pared-down version of the module you
-might use for this purpose.
 
 
 

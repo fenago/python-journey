@@ -19,53 +19,6 @@ arrays or maps, which it implements by using hash tables. Dictionaries
 are amazingly useful, even in simple programs.
 
 
-
-Because dictionaries are less familiar to many programmers than other
-basic data structures such as lists and strings, some of the examples
-illustrating dictionary use are slightly more complex than the
-corresponding examples for other built-in data structures. It may be
-necessary to read parts of [chapter
-8]
-to fully understand some of the examples in this lab.
-
-
-
-### What is a dictionary?
-
-
-
-If you've never
-used associative arrays or hash tables in other languages, a good way to
-start understanding the use of dictionaries is to compare them with
-lists:
-
-
--   [Values in lists are accessed by means of integers called *indices*,
-    which indicate where in the list a given value is found.]
--   [Dictionaries access values by means of integers, strings, or other
-    Python objects called *keys*, which indicate where in the dictionary
-    a given value is found. In other words, both lists and dictionaries
-    provide indexed access to arbitrary values, but the set of items
-    that can be used as dictionary indices is much larger than, and
-    contains, the set of items that can be used as list indices. Also,
-    the mechanism that dictionaries use to provide indexed access is
-    quite different from that used by lists.]
--   [Both lists and dictionaries can store objects of any type.]
--   [Values stored in a list are implicitly *ordered* by their positions
-    in the list, because the indices that access these values are
-    consecutive integers. You may or may not care about this ordering,
-    but you can use it if desired. Values stored in a dictionary are
-    *not* implicitly ordered relative to one another because dictionary
-    keys aren't just numbers. Note that if you're using a dictionary but
-    also care about the order of the items (the order in which they were
-    added, that is), you can use an *ordered dictionary*, which is a
-    dictionary subclass that can be imported from the
-    [collections] module. You can also define an order on the
-    items in a dictionary by using another data structure (often a list)
-    to store such an ordering explicitly; this won't change the fact
-    that basic dictionaries have no implicit (built-in) ordering.]
-
-
 In spite of the differences between them, the use of dictionaries and
 lists often appears to be the same. As a start, an empty dictionary is
 created much like an empty list, but with curly braces instead of square
@@ -188,20 +141,6 @@ red is rouge
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##### Try this: Create a dictionary
 
 
@@ -263,8 +202,7 @@ of key-value pairs separated by commas:
 You can obtain all the keys in
 the dictionary with the [keys] method. This method is often used
 to iterate over the contents of a dictionary using Python's [for]
-loop, described in [chapter
-8]:
+loop:
 
 
 
@@ -441,9 +379,7 @@ This method makes a shallow copy of the dictionary, which is likely to
 be all you need in most situations. For dictionaries that contain any
 modifiable objects as values (for example, lists or other dictionaries),
 you may want to make a deep copy by using the [copy.deepcopy]
-function. See [chapter
-5]
-for an introduction to the concept of shallow and deep copies.
+function.
 
 
 
@@ -755,7 +691,6 @@ than recalculating it.
 
 
 
-
 ##### Try this: Using dictionaries
 
 
@@ -764,26 +699,6 @@ Suppose that you're writing a program that works like a spreadsheet. How
 might you use a dictionary to store the contents of a sheet? Write some
 sample code to both store a value and retrieve a value in a particular
 cell. What might be some drawbacks to this approach?
-
-
-
-
-### Efficiency of dictionaries
-
-
-
-If you come from a traditional compiled-language background, you may
-hesitate to use dictionaries, worrying that they're less efficient than
-lists (arrays). The truth is that the Python dictionary implementation
-is quite fast. Many of the internal language features rely on
-dictionaries, and a lot of work has gone into making them efficient.
-Because all of Python's data structures are heavily optimized, you
-shouldn't spend much time worrying about which is faster or more
-efficient. If the problem can be solved more easily and cleanly by using
-a dictionary than by using a list, do it that way, and consider
-alternatives only if it's clear that dictionaries are causing an
-unacceptable slowdown.
-
 
 
 

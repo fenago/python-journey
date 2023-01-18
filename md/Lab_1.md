@@ -477,22 +477,6 @@ case for lists, several dictionary methods ([clear], [copy],
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Keys must be of an immutable type ***2***, including numbers, strings,
 and tuples. Values can be any kind of object, including mutable types
 such as lists and dictionaries. If you try to access the value of a key
@@ -507,8 +491,6 @@ returns a user-definable value when a key isn't in a dictionary.
 
 
 #### Sets
-
-
 
 A *set* in Python is an unordered collection of objects, used in
 situations where membership and uniqueness in the set are the main
@@ -528,14 +510,6 @@ False
 >>>
 ```
 
-
-
-
-You
-can create a set by using [set] on a sequence, like a list
-***1***. When a sequence is made into a set, duplicates are removed
-***2***. The [in] keyword ***3*** is used to check for membership
-of an object in a set.
 
 
 
@@ -965,23 +939,6 @@ def words_occur():
 if __name__ == '__main__':                                         5
     words_occur()
 ```
-
-
-
-
-
-
-
-
-Documentation
-strings, or *docstrings*, are standard ways of documenting modules,
-functions, methods, and classes ***1***. Comments are anything beginning
-with a \# character ***2***. [read] returns a string containing
-all the characters in a file ***3***, and [split] returns a list
-of the words of a string "split out" based on whitespace. You can use a
-[\\] to break a long statement across multiple lines ***4***. This
-[if] statement allows the program to be run as a script by typing
-[python wo.py] at a command line ***5***.
 
 
 

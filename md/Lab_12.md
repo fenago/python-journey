@@ -746,9 +746,7 @@ except MyError as error:
 
 
 
-The
-result is
-
+The result is
 
 
 ```
@@ -756,23 +754,6 @@ Situation: Some information with file my_filename
 error code: 3
 ```
 
-
-
-
-Because an exception type is a regular class in Python and happens to
-inherit from the root [Exception] class, it's a simple matter to
-create your own subhierarchy of exception types for use by your own
-code. You don't have to worry about this process on a first read of this
-book. You can always come back to it after you've read [chapter
-15].
-Exactly how you create your own exceptions depends on your particular
-needs. If you're writing a small program that may generate only a few
-unique errors or exceptions, subclass the main [Exception] class
-as you've done here. If you're writing a large, multifile code library
-with a special goal in mind---say, weather forecasting---you may decide
-to define a unique class called [WeatherLibraryException] and then
-define all the unique exceptions of the library as subclasses of
-[WeatherLibraryException].
 
 
 
@@ -1168,8 +1149,7 @@ would be best?
 
 
 
-Think about the module you wrote in [chapter
-9]
+Think about the module you wrote in one of the previous lab
 to count word frequencies. What errors might reasonably occur in those
 functions? Refactor those functions to handle those exception conditions
 appropriately.
